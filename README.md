@@ -12,9 +12,9 @@ Primero se ubica en la carpeta de autenticación:
 
 Con el siguiente comando:
 
-cd authCoperex
+    cd authCoperex
 
-    C:\COPEREX\authCoperex
+C:\COPEREX\authCoperex
 
 La configuración para el .env es la siguiente:
 
@@ -59,9 +59,9 @@ Primero se ubica en la carpeta de EmpresasCoperex:
 
 Con el siguiente comando:
 
-cd empresasCoperex
+    cd empresasCoperex
 
-    C:\COPEREX\empresasCoperex
+C:\COPEREX\empresasCoperex
 
 La configuración para el .env es la siguiente:
 
