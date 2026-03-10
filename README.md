@@ -1,34 +1,36 @@
 # PMA: Empresa COPEREX
 
 Este proyecto está compuesto por dos APIs independientes: 
-*API de Autenticación*
 
-*API Gestor de Empresas*
+**API de Autenticación**
+
+**API Gestor de Empresas**
 
 
 # AuthCoperex
 Primero se ubica en la carpeta de autenticación:
+
 Con el siguiente comando:
 
 cd authCoperex
 
-C:\COPEREX\authCoperex
+    C:\COPEREX\authCoperex
 
 La configuración para el .env es la siguiente:
 
-NODE_ENV=development
-PORT=3006
+    NODE_ENV=development
+    PORT=3006
 
-DB_HOST=localhost
-DB_PORT=5436
-DB_NAME=GestorCoperex
-DB_USERNAME=root
-DB_PASSWORD=admin
-DB_SQL_LOGGING=false
+    DB_HOST=localhost
+    DB_PORT=5436
+    DB_NAME=GestorCoperex
+    DB_USERNAME=root
+    DB_PASSWORD=admin
+    DB_SQL_LOGGING=false
 
-JWT_SECRET=MySecretKeyForJWTTokenAuthenticationWith256Bits!
-JWT_ISSUER=AuthService
-JWT_AUDIENCE=AuthService
+    JWT_SECRET=MySecretKeyForJWTTokenAuthenticationWith256Bits!
+    JWT_ISSUER=AuthService
+    JWT_AUDIENCE=AuthService
 
 **Esta API trabaja con PostgreSQL utilizando Docker**
 
@@ -54,22 +56,23 @@ Los endpoints a probar en Postman se encuentran en la carpeta llamada `Postman`.
 Esta API permite crear, editar y visualizar de forma ascendente, descendente, por impacto, entre otras. Esto solo lo Puede realizar el Administrador que se logueo en la Autenticación.
 
 Primero se ubica en la carpeta de EmpresasCoperex:
+
 Con el siguiente comando:
 
 cd empresasCoperex
 
-C:\COPEREX\empresasCoperex
+    C:\COPEREX\empresasCoperex
 
 La configuración para el .env es la siguiente:
 
-NODE_ENV=development
-PORT=3005
+    NODE_ENV=development
+    PORT=3005
 
-URI_MONGO=mongodb://localhost:27017/GestorCoperexEmpresas
+    URI_MONGO=mongodb://localhost:27017/GestorCoperexEmpresas
 
-JWT_SECRET=MySecretKeyForJWTTokenAuthenticationWith256Bits!
-JWT_ISSUER=AuthService
-JWT_AUDIENCE=AuthService
+    JWT_SECRET=MySecretKeyForJWTTokenAuthenticationWith256Bits!
+    JWT_ISSUER=AuthService
+    JWT_AUDIENCE=AuthService**
 
 **Esta API trabaja con MongoDB**
 
