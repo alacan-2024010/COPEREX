@@ -1,0 +1,453 @@
+{
+  "info": {
+    "_postman_id": "374f896b-f24f-4da8-b22c-833612a2c94b",
+    "name": "COPEREX",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48332460",
+    "_collection_link": "https://go.postman.co/collection/48332460-374f896b-f24f-4da8-b22c-833612a2c94b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AuthCoperex",
+      "item": [
+        {
+          "name": "Login-Administrador",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"admin@coperex.com\",\r\n  \"password\": \"Admin12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Empresas",
+      "item": [
+        {
+          "name": "Crear Empresa -Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNTk0NTB9.sqpPHKn3pGH8BtqEjouMo6AaE-o3knfEyXRG0Ro4IYc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Intelaf\",\r\n    \"nivelImpacto\": \"Medio\",\r\n    \"anosTrayectoria\": 15,\r\n    \"categoria\": \"Tecnología\",\r\n    \"descripcion\": \"Cadena líder en Guatemala especializada en la venta de computadoras, tecnología, accesorios y servicios técnicos\",\r\n    \"contacto\": {\r\n        \"email\": \"intelaf@gmail.com\",\r\n        \"telefono\": \"23280000\"\r\n    },\r\n    \"direccion\": {\r\n        \"ciudad\": \"Ciudad de Guatemala\",\r\n        \"pais\": \"Guatemala\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/crear",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "crear"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Empresa - Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNTUwMjd9.LHZpA1-Vlwb7oSe3jPOP1aZi0CsRA91H_EPw3HPWzi4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Intelaf\",\r\n    \"nivelImpacto\": \"Alto\",\r\n    \"anosTrayectoria\": 12,\r\n    \"categoria\": \"Tecnología\",\r\n    \"descripcion\": \"Cadena líder en Guatemala especializada en la venta de computadoras, tecnología, accesorios y servicios técnicos\",\r\n    \"contacto\": {\r\n        \"email\": \"intelaf@gmail.com\",\r\n        \"telefono\": \"23280000\"\r\n    },\r\n    \"direccion\": {\r\n        \"ciudad\": \"Ciudad de Guatemala\",\r\n        \"pais\": \"Guatemala\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/actualizar/69b041274ccd962e43ea536b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "actualizar",
+                "69b041274ccd962e43ea536b"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Visualización De Empresas",
+      "item": [
+        {
+          "name": "Listar Empresas - Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNTk0NTB9.sqpPHKn3pGH8BtqEjouMo6AaE-o3knfEyXRG0Ro4IYc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/listar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "listar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Empresa - Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNTUwMjd9.LHZpA1-Vlwb7oSe3jPOP1aZi0CsRA91H_EPw3HPWzi4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/listar/69b044470e67e943f52a7025",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "listar",
+                "69b044470e67e943f52a7025"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar por  Nombre A-Z - Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNTk0NTB9.sqpPHKn3pGH8BtqEjouMo6AaE-o3knfEyXRG0Ro4IYc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/listar?orden=nombre_asc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "listar"
+              ],
+              "query": [
+                {
+                  "key": "orden",
+                  "value": "nombre_asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar por  Nombre Z-A - Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNTk0NTB9.sqpPHKn3pGH8BtqEjouMo6AaE-o3knfEyXRG0Ro4IYc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/listar?orden=nombre_desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "listar"
+              ],
+              "query": [
+                {
+                  "key": "orden",
+                  "value": "nombre_desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar con años de trayectoria entre 2 y 15 de forma Ascendente - Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNTk0NTB9.sqpPHKn3pGH8BtqEjouMo6AaE-o3knfEyXRG0Ro4IYc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/listar?anosTrayectoriaMin=2&anosTrayectoriaMax=15&orden=anosTrayectoria_asc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "listar"
+              ],
+              "query": [
+                {
+                  "key": "anosTrayectoriaMin",
+                  "value": "2"
+                },
+                {
+                  "key": "anosTrayectoriaMax",
+                  "value": "15"
+                },
+                {
+                  "key": "orden",
+                  "value": "anosTrayectoria_asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar con años de trayectoria entre 2 y 15 de forma Descendente - Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNTk0NTB9.sqpPHKn3pGH8BtqEjouMo6AaE-o3knfEyXRG0Ro4IYc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/listar?anosTrayectoriaMin=2&anosTrayectoriaMax=15&orden=anosTrayectoria_desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "listar"
+              ],
+              "query": [
+                {
+                  "key": "anosTrayectoriaMin",
+                  "value": "2"
+                },
+                {
+                  "key": "anosTrayectoriaMax",
+                  "value": "15"
+                },
+                {
+                  "key": "orden",
+                  "value": "anosTrayectoria_desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar por Categoria - Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNTk0NTB9.sqpPHKn3pGH8BtqEjouMo6AaE-o3knfEyXRG0Ro4IYc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/listar?categoria=Tecnología&orden=nombre_asc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "listar"
+              ],
+              "query": [
+                {
+                  "key": "categoria",
+                  "value": "Tecnología"
+                },
+                {
+                  "key": "orden",
+                  "value": "nombre_asc"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Exportar Excel",
+      "item": [
+        {
+          "name": "Descargar Excel - Administrador",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1NTM1MTBjOS05Mjg5LTQwYjMtOTA5OC1mOTAzZjA0YzA5YzMiLCJpYXQiOjE3NzMxNjQyODN9.pofspuDKJlczxxpGzIE5evFw-2Kd8xISY_snhquqcQs",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3005/gestorEmpresas/v1/empresas/exportar/excel",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3005",
+              "path": [
+                "gestorEmpresas",
+                "v1",
+                "empresas",
+                "exportar",
+                "excel"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
