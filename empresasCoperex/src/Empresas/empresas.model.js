@@ -49,6 +49,10 @@ const empresaSchema  =mongoose.Schema(
             trim: true 
         }
         },
+        user : {
+            type: String, // viene del JWT de AuthService
+            required: true
+        },
         fechaRegistro: {
             type: Date,
             default: Date.now

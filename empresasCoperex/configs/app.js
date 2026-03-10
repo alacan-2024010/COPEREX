@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { dbConnection } from './db.js';
 import { corsOptions } from './cors-configuration.js';
+import EmpresaRoutes from '../src/Empresas/empresas.routes.js';
 
 const BASE_PATH = '/gestorEmpresas/v1';
 
@@ -14,7 +15,10 @@ const middlewares = (app) => {
 
 const routes = (app) => {
 
-    app.get(`${BASE_PATH}/Health`, (request, response) => {
+    app.use(`${BASE_PATH}/empresas`, EmpresaRoutes);
+
+
+    app.get(`${BASE_PATH}/health`, (request, response) => {
         response.status(200).json({
             status: 'Healthy',
             timestamp: new Date().toISOString(),
@@ -34,7 +38,7 @@ const routes = (app) => {
 export const initServer = async () => {
     const app = express();
     const PORT = process.env.PORT;
-    app.set('trus proxy', 1);
+    app.set('trust proxy', 1);
 
     try {
         await dbConnection();

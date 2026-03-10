@@ -1,4 +1,4 @@
-import { Empresa } from "../models/empresa.model.js";
+import{Empresa}from './empresas.model.js'
 
 export const createEmpresa = async (req, res) => {
     try {
@@ -104,20 +104,20 @@ export const getEmpresaById = async (req, res) => {
 export const updateEmpresa = async (req, res) => {
     try {
         const { id } = req.params;
-
         const empresa = await Empresa.findById(id);
+
         if (!empresa) {
             return res.status(404).json({
                 success: false,
-                message: "Empresa no encontrada",
+                message: "Empresa no encontrada"
             });
         }
 
         // Solo admin que creó la empresa puede actualizar
-        if (empresa.user.toString() !== req.user.id) {
+        if (empresa.user !== req.user.id) {
             return res.status(403).json({
                 success: false,
-                message: "No puedes modificar esta empresa",
+                message: "No puedes modificar esta empresa"
             });
         }
 
@@ -125,19 +125,20 @@ export const updateEmpresa = async (req, res) => {
 
         const updatedEmpresa = await Empresa.findByIdAndUpdate(id, updateData, {
             new: true,
-            runValidators: true,
+            runValidators: true
         });
 
         res.status(200).json({
             success: true,
             message: "Empresa actualizada correctamente",
-            data: updatedEmpresa,
+            data: updatedEmpresa
         });
+
     } catch (error) {
         return res.status(500).json({
             success: false,
             message: "Error al actualizar la empresa",
-            error: error.message,
+            error: error.message
         });
     }
 };
@@ -156,7 +157,7 @@ export const deleteEmpresa = async (req, res) => {
         }
 
         // Solo admin que creó la empresa puede eliminar
-        if (empresa.user.toString() !== req.user.id) {
+        if (empresa.user !== req.user.id) {
             return res.status(403).json({
                 success: false,
                 message: "No puedes eliminar esta empresa",
