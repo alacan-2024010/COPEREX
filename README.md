@@ -27,7 +27,6 @@ DB_PASSWORD=admin
 DB_SQL_LOGGING=false
 
 JWT_SECRET=MySecretKeyForJWTTokenAuthenticationWith256Bits!
-
 JWT_ISSUER=AuthService
 JWT_AUDIENCE=AuthService
 
@@ -63,8 +62,8 @@ C:\COPEREX\empresasCoperex
 
 La configuración para el .env es la siguiente:
 
-NODE_ENV = development
-PORT = 3005
+NODE_ENV=development
+PORT=3005
 
 URI_MONGO=mongodb://localhost:27017/GestorCoperexEmpresas
 
