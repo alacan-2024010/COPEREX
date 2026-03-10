@@ -1,5 +1,5 @@
 import{Router}from 'express';
-import {getEmpresaById,createEmpresa,getEmpresas,deleteEmpresa,updateEmpresa} from './empresas.controller.js';
+import {getEmpresaById,createEmpresa,getEmpresas,updateEmpresa} from './empresas.controller.js';
 import { validateJWT} from '../../middlewares/validate-JWT.js';
 
 const router = Router();
@@ -26,12 +26,6 @@ router.put(
     '/actualizar/:id',
     validateJWT,
     updateEmpresa
-)
-
-router.delete(
-    '/eliminar/:id',
-    validateJWT,
-    deleteEmpresa
 )
 
 export default router;

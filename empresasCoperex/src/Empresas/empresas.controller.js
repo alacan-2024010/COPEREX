@@ -142,39 +142,3 @@ export const updateEmpresa = async (req, res) => {
         });
     }
 };
-
-// Eliminar empresa
-export const deleteEmpresa = async (req, res) => {
-    try {
-        const { id } = req.params;
-
-        const empresa = await Empresa.findById(id);
-        if (!empresa) {
-            return res.status(404).json({
-                success: false,
-                message: "Empresa no encontrada",
-            });
-        }
-
-        // Solo admin que creó la empresa puede eliminar
-        if (empresa.user !== req.user.id) {
-            return res.status(403).json({
-                success: false,
-                message: "No puedes eliminar esta empresa",
-            });
-        }
-
-        await Empresa.findByIdAndDelete(id);
-
-        res.status(200).json({
-            success: true,
-            message: "Empresa eliminada correctamente",
-        });
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: "Error al eliminar la empresa",
-            error: error.message,
-        });
-    }
-};
