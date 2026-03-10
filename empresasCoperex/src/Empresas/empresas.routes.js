@@ -1,5 +1,5 @@
 import{Router}from 'express';
-import {getEmpresaById,createEmpresa,getEmpresas,updateEmpresa} from './empresas.controller.js';
+import {getEmpresaById,createEmpresa,getEmpresas,updateEmpresa, exportEmpresasExcel} from './empresas.controller.js';
 import { validateJWT} from '../../middlewares/validate-JWT.js';
 
 const router = Router();
@@ -26,6 +26,12 @@ router.put(
     '/actualizar/:id',
     validateJWT,
     updateEmpresa
+)
+
+router.get(
+    '/exportar/excel',
+    validateJWT,
+    exportEmpresasExcel
 )
 
 export default router;
