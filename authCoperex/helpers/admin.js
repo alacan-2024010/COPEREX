@@ -1,5 +1,5 @@
 import{Admin}from "../src/auth/auth.model.js";
-import { encryptPassword } from "./encrypt-password.js";
+import{encryptPassword}from "./hash-password.js";
 
 export const createDefaultAdmins = async () => {
 

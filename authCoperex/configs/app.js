@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './db.js';
 import { createDefaultAdmins } from '../helpers/admin.js';
+import AuthRoutes from '../src/auth/auth.routes.js';
 
 
 const BASE_PATH = '/api/v1';
@@ -24,6 +25,7 @@ export const initServer = async () => {
 
         await createDefaultAdmins();
 
+        app.use(`${BASE_PATH}/auth`, AuthRoutes);
         // Health check (opcional pero recomendado)
         app.get(`${BASE_PATH}/health`, (req, res) => {
             res.status(200).json({
