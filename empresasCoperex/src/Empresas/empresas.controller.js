@@ -40,16 +40,56 @@ export const createEmpresa = async (req, res) => {
 // Listar empresas
 export const getEmpresas = async (req, res) => {
     try {
-        const { page = 1, limit = 15, categoria, nivelImpacto } = req.query;
+        const { 
+            page = 1, 
+            limit = 15, 
+            categoria, 
+            nivelImpacto,
+            anosTrayectoriaMin,
+            anosTrayectoriaMax,
+            orden //el orden que llevara para listar las empresas
+        } = req.query;
 
-        const filter = {};
+        const filter = { isActive: true }; //empresas activas
         if (categoria) filter.categoria = categoria;
         if (nivelImpacto) filter.nivelImpacto = nivelImpacto;
+        if (anosTrayectoriaMin || anosTrayectoriaMax) {
+            filter.anosTrayectoria = {};
+            if (anosTrayectoriaMin) filter.anosTrayectoria.$gte = parseInt(anosTrayectoriaMin);
+            if (anosTrayectoriaMax) filter.anosTrayectoria.$lte = parseInt(anosTrayectoriaMax);
+        }
+
+        // Construir orden dinámico
+        let sort = {};
+        switch (orden) {
+            //el 1 hace que se ordene de arriba hacia abajo 
+            // el -1 hace que se ordene de abajo hacia arriba
+            case 'nombre_asc':
+                sort = { nombre: 1 };
+                break;
+            case 'nombre_desc':
+                sort = { nombre: -1 };
+                break;
+            case 'nivelImpacto_asc':
+                sort = {nivelImpacto: 1};
+                break;
+            case 'nivelImpacto_desc':
+                sort = {nivelImpacto: -1};
+                break;
+            case 'anosTrayectoria_asc':
+                sort = { anosTrayectoria: 1 };
+                break;
+            case 'anosTrayectoria_desc':
+                sort = { anosTrayectoria: -1 };
+                break;
+            default:
+                sort = { createdAt: -1 }; // por defecto fecha de registro descendente
+        }
 
         const empresas = await Empresa.find(filter)
             .limit(parseInt(limit))
             .skip((parseInt(page) - 1) * parseInt(limit))
-            .sort({ createdAt: -1 });
+            .sort(sort);
 
         const total = await Empresa.countDocuments(filter);
 
