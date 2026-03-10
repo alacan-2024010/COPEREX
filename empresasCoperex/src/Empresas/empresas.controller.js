@@ -1,4 +1,5 @@
-import{Empresa}from './empresas.model.js'
+import{Empresa}from './empresas.model.js';
+import{generarReporteExcel} from './excel.service.js';
 
 export const createEmpresa = async (req, res) => {
     try {
@@ -182,6 +183,32 @@ export const updateEmpresa = async (req, res) => {
             success: false,
             message: "Error al actualizar la empresa",
             error: error.message
+        });
+    }
+}
+
+//Para exportar el excel
+export const exportEmpresasExcel = async (req, res) => {
+    try {
+        const workbook = await generarReporteExcel();
+
+        // Headers para que el navegador/cliente descargue el archivo
+        res.setHeader(
+            'Content-Type',
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        );
+        res.setHeader(
+            'Content-Disposition',
+            'attachment; filename=empresas.xlsx'
+        );
+
+        await workbook.xlsx.write(res);
+        res.end();
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error generando el reporte Excel',
+            error: error.message,
         });
     }
 };
