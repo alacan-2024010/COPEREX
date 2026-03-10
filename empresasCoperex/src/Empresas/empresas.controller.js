@@ -2,10 +2,10 @@ import{Empresa}from './empresas.model.js'
 
 export const createEmpresa = async (req, res) => {
     try {
-        const { nombre, nivelImpacto, anosTrayectoria, categoria } = req.body;
+        const { nombre, nivelImpacto, anosTrayectoria, categoria, descripcion, contacto, direccion } = req.body;
 
         // Validación de campos 
-        if (!nombre || !nivelImpacto || !anosTrayectoria || !categoria) {
+        if (!nombre || !nivelImpacto || !anosTrayectoria || !categoria || !contacto || !direccion) {
             return res.status(400).json({
                 success: false,
                 message: "Todos los campos son obligatorios",
@@ -17,6 +17,9 @@ export const createEmpresa = async (req, res) => {
             nivelImpacto,
             anosTrayectoria,
             categoria,
+            descripcion,
+            contacto,
+            direccion,
             user: req.user.id, //el admin que creo la empresa
         };
 
