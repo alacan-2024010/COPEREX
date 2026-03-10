@@ -1,5 +1,5 @@
 import ExcelJS from 'exceljs';
-import { Empresa } from './empresas.controller.js';
+import { Empresa } from './empresas.model.js';
 
 export const generarReporteExcel = async () => {
     const empresas = await Empresa.find({ isActive: true });
