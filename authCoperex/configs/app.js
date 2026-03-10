@@ -5,6 +5,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './db.js';
+import { createDefaultAdmins } from '../helpers/admin.js';
+
 
 const BASE_PATH = '/api/v1';
 
@@ -18,7 +20,9 @@ export const initServer = async () => {
     app.use(morgan('dev'));
 
     try {
-        await dbConnection()
+        await dbConnection();
+
+        await createDefaultAdmins();
 
         // Health check (opcional pero recomendado)
         app.get(`${BASE_PATH}/health`, (req, res) => {
